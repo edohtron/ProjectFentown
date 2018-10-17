@@ -32,20 +32,19 @@ public class SceneControllerScript : MonoBehaviour {
     }
 
 
-    public void SetGameScene() {
-        SceneManager.LoadScene("01_GameScene" , LoadSceneMode.Single);
+    public void WorldScene() {
+        SceneManager.LoadScene("01_WorldScene" , LoadSceneMode.Single);
     }
 
     public void OptionsMenu() {
-        SceneManager.LoadScene("01_GameScene" , LoadSceneMode.Single);
+        SceneManager.LoadScene("01_WorldScene" , LoadSceneMode.Single);
     }
 
-    public void SetMainMenuScene() {
-        SceneManager.LoadScene("00_MainMenuScene" , LoadSceneMode.Single);
+    public void MainMenuScene() {
+        SceneManager.LoadScene("00_MainMenu" , LoadSceneMode.Single);
     }
 
-
-    public void ExitGame() {
+    public void QuitGame() {
         Application.Quit();
     }
 }
