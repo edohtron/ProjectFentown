@@ -6,3 +6,7 @@ Fentown1/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
 Fentown1/obj/
 Fentown1/Assembly-CSharp.csproj
 Fentown1/Fentown1.sln
+*.suo
+Fentown1/.vs/
+Fentown1/Library/
+Fentown1/Temp/
