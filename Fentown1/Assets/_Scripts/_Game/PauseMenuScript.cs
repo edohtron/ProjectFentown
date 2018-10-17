@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour {
 
-    private SceneController _sceneController;
+    private SceneControllerScript _sceneController;
     private GameObject pauseMenuCanvas;
 
 	// Use this for initialization
 	void Start () {
-        _sceneController = GameObject.Find("SCENECONTROLLER").GetComponent<SceneController>();
+        _sceneController = GameObject.Find("SCENECONTROLLER").GetComponent<SceneControllerScript>();
         pauseMenuCanvas = gameObject.transform.Find("PauseMenu").gameObject;
         pauseMenuCanvas.SetActive(false);
 
@@ -19,7 +19,7 @@ public class PauseMenuScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (!_sceneController) {
-            _sceneController = GameObject.Find("SCENECONTROLLER").GetComponent<SceneController>();
+            _sceneController = GameObject.Find("SCENECONTROLLER").GetComponent<SceneControllerScript>();
         }
 
 		if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -34,7 +34,5 @@ public class PauseMenuScript : MonoBehaviour {
        
 	}
 
-    void SetMainMenuScene() {
-        SceneManager.LoadScene("MainMenuScene" , LoadSceneMode.Single);
-    }
+
 }
