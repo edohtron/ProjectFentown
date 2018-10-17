@@ -3,49 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneControllerScript : MonoBehaviour {
+public class SceneController : MonoBehaviour {
 
-    private Scene currentScene;
+    public Scene currentScene;
     public string currentSceneName;
 
     public bool isGameActive = false;
 
-    private void Awake() {
+    // Use this for initialization
+    void Start () {
         DontDestroyOnLoad(this.gameObject);
-
-        if (FindObjectsOfType(GetType()).Length > 1) {
-            Destroy(this.gameObject);
-        }
-    }
-
-    void Start() {
         currentScene = SceneManager.GetActiveScene();
         currentSceneName = currentScene.name;
-    }
-
-    // Update is called once per frame
-    void Update() {
+	}
+	
+	// Update is called once per frame
+	void Update () {
         if (currentScene != SceneManager.GetActiveScene()) {
             currentScene = SceneManager.GetActiveScene();
             currentSceneName = currentScene.name;
         }
-    }
+	}
 
 
     public void SetGameScene() {
-        SceneManager.LoadScene("01_GameScene" , LoadSceneMode.Single);
+        SceneManager.LoadScene("GameScene" , LoadSceneMode.Single);
     }
 
     public void OptionsMenu() {
-        SceneManager.LoadScene("01_GameScene" , LoadSceneMode.Single);
+        SceneManager.LoadScene("GameScene" , LoadSceneMode.Single);
     }
 
     public void SetMainMenuScene() {
-        SceneManager.LoadScene("00_MainMenuScene" , LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenuScene" , LoadSceneMode.Single);
     }
 
 
     public void ExitGame() {
-        Application.Quit();
+        // CLOSE APPLICATION!
     }
 }
