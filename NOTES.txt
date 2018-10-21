@@ -1,0 +1,3 @@
+**REMINDER**
+
+-All Scenes need GameObjects: UI_Management, __ PauseMenucanvas, PlayerData

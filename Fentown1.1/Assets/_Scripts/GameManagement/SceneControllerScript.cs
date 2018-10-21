@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneControllerScript : MonoBehaviour {
 
-    private Scene currentScene;
+    public Scene currentScene;
     public string currentSceneName;
 
     public bool isGameActive = false;
@@ -30,4 +30,7 @@ public class SceneControllerScript : MonoBehaviour {
         }
     }
 
+    public string CurrentSceneName() {
+        return currentScene.name;
+    }
 }
