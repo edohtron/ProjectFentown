@@ -12,7 +12,6 @@ public class SceneControllerScript : MonoBehaviour {
 
     private void Awake() {
         DontDestroyOnLoad(this.gameObject);
-
         if (FindObjectsOfType(GetType()).Length > 1) {
             Destroy(this.gameObject);
         }
@@ -31,20 +30,4 @@ public class SceneControllerScript : MonoBehaviour {
         }
     }
 
-
-    public void WorldScene() {
-        SceneManager.LoadScene("01_WorldScene" , LoadSceneMode.Single);
-    }
-
-    public void OptionsMenu() {
-        SceneManager.LoadScene("01_WorldScene" , LoadSceneMode.Single);
-    }
-
-    public void MainMenuScene() {
-        SceneManager.LoadScene("00_MainMenu" , LoadSceneMode.Single);
-    }
-
-    public void QuitGame() {
-        Application.Quit();
-    }
 }

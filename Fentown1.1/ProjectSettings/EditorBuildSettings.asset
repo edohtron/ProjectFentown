@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/__Scenes/01_WorldScene.unity
     guid: 1df2cc8cc75552247b4b181ed3461562
+  - enabled: 1
+    path: Assets/__Scenes/98_DemoBattleScene.unity
+    guid: ed4d281cc13ff574f84cae9343151d91
+  - enabled: 1
+    path: Assets/__Scenes/99_DemoCity.unity
+    guid: d41d2c7ace458af4fbc407b0aa5e90b4
   m_configObjects: {}

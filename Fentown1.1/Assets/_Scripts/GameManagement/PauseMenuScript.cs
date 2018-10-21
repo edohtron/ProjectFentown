@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour {
 
-    private SceneControllerScript _sceneController;
     public GameObject pauseMenuInterface;
 
 	// Use this for initialization
@@ -15,7 +13,6 @@ public class PauseMenuScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (Input.GetKeyDown(KeyCode.Escape)) {
             if (!pauseMenuInterface.activeInHierarchy) {
                 PauseGame();
@@ -25,7 +22,6 @@ public class PauseMenuScript : MonoBehaviour {
                 UnpauseGame();
             }
         }
-       
 	}
 
     public void PauseGame() {
