@@ -5,15 +5,26 @@ using GameSettings;
 
 public class PlayerInputScript : MonoBehaviour {
 
-    private Camera _camera;
-    private WorldDataScript worldData;
+    //private Camera _camera;
+    private PlayerScript _player;
+    private SelectionManager selectionManager;
+    private HUD hud;
+
+    //private WorldDataScript worldData;
+
+    public Vector3 startPosition, startWorld;
+    public Vector3 endPositon, endWorld;
 
     private bool isPoiSelected;
 
 	// Use this for initialization
 	void Start () {
-        _camera = Camera.main;
-        worldData = GameObject.Find("WorldData").GetComponent<WorldDataScript>();
+        //_camera = Camera.main;
+        _player = GetComponent<PlayerScript>();
+        selectionManager = GetComponent<SelectionManager>();
+        hud = GetComponent<HUD>();
+        //worldData = GameObject.Find("WorldData").GetComponent<WorldDataScript>();
+
 
         isPoiSelected = false;
 	}
@@ -21,12 +32,15 @@ public class PlayerInputScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        MouseActivity();
+        if (_player.isPlayer) {
+            MouseActivity();
 
-        if (!isPoiSelected) {
-            MoveCamera();
-            //CameraZoom();
+            if (!isPoiSelected) {
+                MoveCamera();
+                //CameraZoom();
+            }
         }
+
 	}
 
     public void TogglePoiInterface(bool tf) {
@@ -34,19 +48,39 @@ public class PlayerInputScript : MonoBehaviour {
     }
 
     private void MouseActivity() {
+        // SINGLE LEFT CLICK
         if (Input.GetMouseButtonDown(0)) {
             LeftMouseClick();
         }
+
+        // LEFT HELD DOWN
+        if (Input.GetMouseButton(0)) {
+            DrawSelectionBox();
+        }
+
+        // SINGLE RIGHT CLICK
         else if (Input.GetMouseButtonDown(1)) {
             RightMouseClick();
         }
     }
 
     private void LeftMouseClick() {
+        if (hud.MouseInBounds()) {
+            GameObject hitObject = FindHitObject();
+            Vector3 hitPoint = FindHitPoint();
 
+            // IF LEFT CLICK ON GAMEOBJECT, SET AS SELECTED
+            if (hitObject != null && hitPoint != PropertyManager.InvalidPosition) {
+                _player.SetSelectedObject(hitObject);
+            }
+        }
     }
 
     private void RightMouseClick() {
+
+    }
+
+    private void DrawSelectionBox() {
 
     }
 
@@ -73,9 +107,9 @@ public class PlayerInputScript : MonoBehaviour {
             movement.z -= PropertyManager.ScrollSpeed;
         }
 
-        else if (yPos <= Screen.height && yPos > Screen.height - PropertyManager.ScrollWidth) {
-
-            movement.z += PropertyManager.ScrollSpeed;
+        else if (yPos <= Screen.height - PropertyManager.Details_Bar_Height &&
+                 yPos > Screen.height - (PropertyManager.ScrollWidth + PropertyManager.Details_Bar_Height)) {
+                    movement.z += PropertyManager.ScrollSpeed;
         }
 
         // make sure movement is in direction cam is facing
@@ -109,8 +143,6 @@ public class PlayerInputScript : MonoBehaviour {
             Camera.main.transform.position = Vector3.MoveTowards(origin , destination , Time.deltaTime * PropertyManager.ScrollSpeed);
 
         }
-
-
     }
 
     private GameObject FindHitObject() {

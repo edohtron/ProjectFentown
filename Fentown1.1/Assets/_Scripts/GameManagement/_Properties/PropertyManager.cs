@@ -19,13 +19,15 @@ namespace GameSettings {
         // INVALID ACTIONS
         public static Vector3 InvalidPosition { get { return invalidposition; } }
         private static Vector3 invalidposition = new Vector3(-99999 , -99999 , -99999);
-        //private static Bounds InvalidBounds { get { return invalidBounds; } }
+        private static Bounds InvalidBounds { get { return invalidBounds; } }
 
         public static void StoreSelectBoxItems(GUISkin skin) { selectBoxSkin = skin; }
         public static GUISkin SelectBoxSkin { get { return selectBoxSkin; } }
         private static GUISkin selectBoxSkin;
+        private static Bounds invalidBounds = new Bounds(new Vector3(-99999 , -99999 , -99999) , new Vector3(0 , 0 , 0));
 
-        //private static Bounds invalidBounds = new Bounds(new Vector3(-99999 , -99999 , -99999) , new Vector3(0 , 0 , 0));
+        // OTHER
+        public static int Details_Bar_Height { get { return 40; } }
     }
 
 }
